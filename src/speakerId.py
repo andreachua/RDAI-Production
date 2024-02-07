@@ -6,7 +6,7 @@ import os.path
 
 class speakerIdService:
     def __init__(self):
-        self.modelpath = "demo_models/"
+        self.modelpath = "../demo_models/"
 
     def extract_features(self, audio,rate):
         mfcc_feature = mfcc.mfcc(audio,rate, 0.015, 0.01,20,nfft = 1024, appendEnergy = True)     
@@ -57,7 +57,7 @@ class speakerIdService:
             log_likelihood[i] = scores.sum()
         
         winner = np.argmax(log_likelihood)
-        selected_model = speakers[winner].split('/')[1]
+        selected_model = speakers[winner].split('/')[2]
 
         return selected_model
     
